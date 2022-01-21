@@ -19,6 +19,7 @@ export const HistoryList = props => (
           bulkActionButtons={false}
           pagination={<MyPagination/>}
           perPage={25}
+          sort={{field: 'id', order: 'DESC'}}
 
     >
         <Datagrid>
