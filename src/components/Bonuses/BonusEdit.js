@@ -1,5 +1,5 @@
 import {
-    BooleanInput, DateField,
+    BooleanInput,
     Edit,
     SimpleForm,
     TextInput,
@@ -24,7 +24,7 @@ export const BonusEdit = props => (
             <RichTextInput source="description"/>
             <TextInput source="image"/>
             <BooleanInput source="autoActive"/>
-            
+
             <SelectInput source="weight" choices={[
                 {id: '0', name: '0'},
                 {id: '1', name: '1'},

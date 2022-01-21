@@ -6,16 +6,13 @@ import {
     TextField,
     NumberField,
     BooleanField,
-    TextInput,
-    EditButton,
-    DeleteButton,
-    ReferenceField,
+    // TextInput,
     DateField
 } from 'react-admin';
 
-const userFilters = [
-    <TextInput source="_search" label="Search" alwaysOn/>,
-];
+// const userFilters = [
+//     <TextInput source="_search" label="Search" alwaysOn/>,
+// ];
 
 export const BonusList = props => (
     <List {...props}>
