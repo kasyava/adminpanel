@@ -51,18 +51,36 @@ const httpClient = async (url, options = {}) => {
         }
 
         // резолвим запрос
-        let response = await refreshTokenRequest;
-
-        // очищаем переменную
-        refreshTokenRequest = null;
-        let {status, token, refreshToken} = response.data;
-        if (status === 'ok') {
-            let newDecodedToken = decodeJwt(token);
-            localStorage.setItem('token', token);
-            localStorage.setItem('refreshToken', refreshToken);
-            localStorage.setItem('permissions', newDecodedToken.permission);
-            actualToken = token
+        try {
+            let response = await refreshTokenRequest;
+            // очищаем переменную
+            refreshTokenRequest = null;
+            let {status, token, refreshToken} = response.data;
+            if (status === 'ok') {
+                let newDecodedToken = decodeJwt(token);
+                localStorage.setItem('token', token);
+                localStorage.setItem('refreshToken', refreshToken);
+                localStorage.setItem('permissions', newDecodedToken.permission);
+                actualToken = token
+            }
+        } catch (e) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('permissions');
+            return history.push("/");
         }
+
+
+        // // очищаем переменную
+        // refreshTokenRequest = null;
+        // let {status, token, refreshToken} = response.data;
+        // if (status === 'ok') {
+        //     let newDecodedToken = decodeJwt(token);
+        //     localStorage.setItem('token', token);
+        //     localStorage.setItem('refreshToken', refreshToken);
+        //     localStorage.setItem('permissions', newDecodedToken.permission);
+        //     actualToken = token
+        // }
     }
 
 
